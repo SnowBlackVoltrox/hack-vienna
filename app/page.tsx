@@ -17,8 +17,8 @@ const MAX_VISIBLE = 3;
 
 const AGE_STYLES = [
   { opacity: 1,    filter: "none" },
-  { opacity: 0.32, filter: "grayscale(0.55) brightness(1.05)" },
-  { opacity: 0.10, filter: "grayscale(0.9)  brightness(1.1)" },
+  { opacity: 0.44, filter: "grayscale(0.18)" },
+  { opacity: 0.14, filter: "grayscale(0.32)" },
 ];
 
 const FIRST_MSG =
@@ -266,11 +266,11 @@ export default function Home() {
       className="page-in min-h-screen flex items-center justify-center px-6"
       style={{ background: CHAT_BG }}
     >
-      {/* Fixed-height column: messages grow upward, input never moves */}
-      <div className="w-full max-w-3xl flex flex-col" style={{ height: "75vh" }}>
+      {/* Centered column — fixed-height messages area keeps input from ever moving */}
+      <div className="w-full max-w-3xl flex flex-col gap-5">
 
-        {/* Messages — justify-end pins them to the bottom of this area */}
-        <div className="flex-1 flex flex-col justify-end gap-6 overflow-hidden">
+        {/* Messages — fixed height, newest at bottom, overflow hidden */}
+        <div className="flex flex-col justify-end gap-6 overflow-hidden" style={{ height: "44vh" }}>
           {rendered.map((msg) => {
             const age = AGE_STYLES[Math.max(msg._fromBottom, 0)] ?? AGE_STYLES[2];
 
@@ -340,8 +340,8 @@ export default function Home() {
           })}
         </div>
 
-        {/* Input — flex-shrink-0 keeps it locked in place */}
-        <div className="flex-shrink-0 mt-5">
+        {/* Input — always at the same spot below the fixed messages area */}
+        <div className="flex-shrink-0">
           <div
             className="flex gap-3 items-center px-5 py-4 rounded-2xl"
             style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(14px)", boxShadow: "0 8px 40px rgba(19,4,79,0.1),0 2px 8px rgba(19,4,79,0.06)" }}
@@ -373,3 +373,4 @@ export default function Home() {
     </div>
   );
 }
+

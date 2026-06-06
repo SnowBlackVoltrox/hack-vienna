@@ -263,14 +263,14 @@ export default function Home() {
 
   return (
     <div
-      className="page-in min-h-screen flex items-center justify-center px-6"
+      className="page-in min-h-screen flex flex-col items-center justify-start px-6 pt-[8vh]"
       style={{ background: CHAT_BG }}
     >
       {/* Centered column — fixed-height messages area keeps input from ever moving */}
       <div className="w-full max-w-3xl flex flex-col gap-5">
 
         {/* Messages — fixed height, newest at bottom, overflow hidden */}
-        <div className="flex flex-col justify-end gap-6 overflow-hidden" style={{ height: "44vh" }}>
+        <div className="flex flex-col justify-end gap-6 overflow-hidden" style={{ height: "28vh" }}>
           {rendered.map((msg) => {
             const age = AGE_STYLES[Math.max(msg._fromBottom, 0)] ?? AGE_STYLES[2];
 

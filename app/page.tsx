@@ -322,10 +322,13 @@ export default function Home() {
   ];
 
   return (
-    <div className="page-in min-h-screen flex flex-col" style={{ background: CHAT_BG }}>
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto py-16 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col gap-8">
+    <div
+      className="page-in min-h-screen flex flex-col items-center justify-center px-6 py-12"
+      style={{ background: CHAT_BG }}
+    >
+      <div className="w-full max-w-3xl flex flex-col gap-6">
+        {/* Messages */}
+        <div className="flex flex-col gap-7">
           {rendered.map((msg) => {
             const ageStyle = AGE_STYLES[msg._fromBottom] ?? AGE_STYLES[2];
             return (
@@ -371,7 +374,7 @@ export default function Home() {
                           borderRadius: "24px 24px 6px 24px",
                           boxShadow: "0 4px 24px rgba(19,4,79,0.09),0 1px 4px rgba(19,4,79,0.05)",
                         }),
-                    maxWidth: 640,
+                    maxWidth: 560,
                     padding: "1.25rem 1.6rem",
                   }}
                 >
@@ -390,15 +393,11 @@ export default function Home() {
           })}
           <div ref={bottomRef} />
         </div>
-      </div>
 
-      {/* Input — right-aligned */}
-      <div className="px-6 pb-8 pt-2 max-w-5xl mx-auto w-full flex justify-end">
+        {/* Input — centered, snug below messages */}
         <div
           className="flex gap-3 items-center px-5 py-4 rounded-2xl"
           style={{
-            width: "58%",
-            minWidth: 360,
             background: "rgba(255,255,255,0.88)",
             backdropFilter: "blur(14px)",
             boxShadow: "0 8px 40px rgba(19,4,79,0.1),0 2px 8px rgba(19,4,79,0.06)",
